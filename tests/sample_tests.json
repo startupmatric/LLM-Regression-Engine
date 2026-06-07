@@ -1,3 +1,16 @@
-from core.config import OPENAI_API_KEY
-
-print("API Key Loaded:", OPENAI_API_KEY[:10], "...")
+[
+    {
+      "name": "json_fail_case",
+      "prompt": "Return ONLY JSON with keys name and age",
+      "rules": [
+        { "type": "json_valid", "params": {} }
+      ]
+    },
+    {
+      "name": "json_pass_case",
+      "prompt": "Return ONLY valid JSON. No explanation. No markdown. Format: {\"name\": \"string\", \"age\": number}",
+      "rules": [
+        { "type": "json_valid", "params": {} }
+      ]
+    }
+  ]
