@@ -1,16 +1,86 @@
 [
-    {
-      "name": "json_fail_case",
-      "prompt": "Return ONLY JSON with keys name and age",
-      "rules": [
-        { "type": "json_valid", "params": {} }
-      ]
-    },
-    {
-      "name": "json_pass_case",
-      "prompt": "Return ONLY valid JSON. No explanation. No markdown. Format: {\"name\": \"string\", \"age\": number}",
-      "rules": [
-        { "type": "json_valid", "params": {} }
-      ]
-    }
-  ]
+  {
+    "name": "length_test",
+    "prompt": "Explain AI in 5 words",
+    "expected_output": "Artificial intelligence learns from data",
+    "expected_similarity_threshold": 0.6,
+    "rules": [
+      {
+        "type": "max_length",
+        "params": { "limit": 5 }
+      }
+    ]
+  },
+  {
+    "name": "json_fail_case",
+    "prompt": "Return ONLY JSON with keys name and age",
+    "expected_output": "{\"name\": \"John\", \"age\": 30}",
+    "expected_similarity_threshold": 0.8,
+    "rules": [
+      {
+        "type": "json_valid",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "name": "json_pass_case",
+    "prompt": "Return ONLY valid JSON. No explanation. No markdown. Format: {\"name\": \"string\", \"age\": number}",
+    "expected_output": "{\"name\": \"John\", \"age\": 30}",
+    "expected_similarity_threshold": 0.9,
+    "rules": [
+      {
+        "type": "json_valid",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "name": "strict_json_test",
+    "prompt": "Return ONLY valid JSON with key 'name'. No explanation.",
+    "expected_output": "{\"name\": \"John\"}",
+    "expected_similarity_threshold": 0.9,
+    "rules": [
+      {
+        "type": "json_valid",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "name": "keyword_test",
+    "prompt": "Explain AI in one sentence",
+    "expected_output": "Artificial intelligence is the simulation of human intelligence.",
+    "expected_similarity_threshold": 0.6,
+    "rules": [
+      {
+        "type": "contains_keyword",
+        "params": { "word": "intelligence" }
+      }
+    ]
+  },
+  {
+    "name": "format_bullet_test",
+    "prompt": "List 3 benefits of AI in bullet points",
+    "expected_output": "- Automation\n- Efficiency\n- Insights",
+    "expected_similarity_threshold": 0.5,
+    "rules": [
+      {
+        "type": "format",
+        "params": { "type": "bullet_points" }
+      }
+    ]
+  },
+  {
+    "name": "not_contains_test",
+    "prompt": "Explain AI without using the word robot",
+    "expected_output": "AI enables machines to learn from data and perform tasks intelligently.",
+    "expected_similarity_threshold": 0.6,
+    "rules": [
+      {
+        "type": "not_contains",
+        "params": { "word": "robot" }
+      }
+    ]
+  }
+]
